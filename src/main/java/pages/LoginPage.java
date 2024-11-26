@@ -24,4 +24,20 @@ public class LoginPage extends BasePage{
         inputEmail.sendKeys(email);
         inputPassword.sendKeys(password);
     }
+
+    @FindBy(xpath = "//button[@name='login']" )
+    WebElement btnLogin;
+
+    public void clickBtnLogin(){
+        btnLogin.click();
+    }
+
+
+    @FindBy(xpath = "//button[@name='registration']" )
+    WebElement btnRegistration;
+
+    public void clickBtnRegistration(){
+        btnRegistration.click();
+    }
+
 }
