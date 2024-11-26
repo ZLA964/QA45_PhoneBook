@@ -9,10 +9,8 @@ import static org.testng.Assert.assertTrue;
 public class RegistrationTests extends ApplicationManager {
 
     @Test
-    public void registrationPositiveTest(){
-        System.out.println("Начало теста: регистрация");
+    void registrationPositiveTest(){
         new HomePage(getDriver());
-        System.out.println("HomePage загружена");
     }
 
     @Test

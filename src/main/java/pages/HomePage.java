@@ -6,8 +6,8 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class HomePage extends BasePage {
 
-    public HomePage(WebDriver driver){
-        setDriver(driver);
+    public HomePage(WebDriver webDrv){
+        setDriver(webDrv);
         driver.get("https://telranedu.web.app/home");
         PageFactory.initElements(new AjaxElementLocatorFactory(driver,10), this);
     }
