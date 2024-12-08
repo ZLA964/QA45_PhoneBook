@@ -1,7 +1,10 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
     static WebDriver driver;
@@ -22,8 +25,15 @@ public class BasePage {
         return element.getText().contains(text);
     }
 
+    public void waitNewElementOnPage(String xpath, int timeoutInSeconds) {
+        new WebDriverWait(driver, timeoutInSeconds)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+    }
 
-
-
+    // wait new Element on Page
+    public void waitNewElementOnPage(WebElement element, int timeoutInSeconds) {
+        new WebDriverWait(driver, timeoutInSeconds)
+                .until(ExpectedConditions.visibilityOf(element));
+    }
 
 }

@@ -11,7 +11,7 @@ import pages.LoginPage;
 
 import java.util.Random;
 
-public class LoginTestInClass extends ApplicationManager {
+public class LoginTestInClassTest extends ApplicationManager {
     private String email;
     private String password;
 
@@ -27,7 +27,7 @@ public class LoginTestInClass extends ApplicationManager {
     }
 
     @Test
-    public void logunPositiveTest(){
+    public void loginPositiveTest(){
         UserDto user = new UserDto(email,password);
         new HomePage(getDriver()).clickBtnLoginHeader();
         new LoginPage(getDriver()).typeLoginForm(user);

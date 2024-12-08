@@ -17,7 +17,6 @@ public class LoginTests extends ApplicationManager {
         onLoginPage.typeLoginForm(
                 testData.getLogin(1),
                       testData.getPassword(1));
- //       onLoginPage.pause(1);
- //       onLoginPage.clickBtnLogin();
+
     }
 }
