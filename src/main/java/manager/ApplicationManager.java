@@ -30,13 +30,13 @@ public class ApplicationManager {
 
     @AfterMethod
     public void tearDown() {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
         if (driver != null) {
-            driver.quit();
+//            driver.quit();
         }
     }
 }
