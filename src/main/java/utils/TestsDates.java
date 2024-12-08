@@ -1,13 +1,11 @@
 package utils;
 
+import lombok.Getter;
+
+@Getter
 public class TestsDates {
     private final String[] logins;
     private final String[] passwords;
-
-    public TestsDates(String[] logins, String[] passwords) {
-        this.logins = logins;
-        this.passwords = passwords;
-    }
 
     public TestsDates(int numbersOfTest) {
         this.logins = new String[numbersOfTest];
@@ -17,14 +15,6 @@ public class TestsDates {
             this.logins[i] = "login" + i;
             this.passwords[i] = "password" + i;
         }
-    }
-
-    public String[] getLogins() {
-        return logins;
-    }
-
-    public String[] getPasswords() {
-        return passwords;
     }
 
     public String getLogin(int numberTest) {

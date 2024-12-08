@@ -20,11 +20,13 @@ public class HomePage extends BasePage {
     public void clickBtnLoginHeader(){
         btnLogin.click();
     }
-
+/*
     @FindBy(xpath = "//a[@href='/about']" )
     WebElement btnAbout;
 
     public void clickBtnAbout(){
         btnAbout.click();
     }
+    not usee also
+ */
 }

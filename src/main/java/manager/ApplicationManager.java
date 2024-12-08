@@ -1,22 +1,16 @@
 package manager;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import utils.TestsDates;
 
+@Getter
 public class ApplicationManager {
     private WebDriver driver;
     private TestsDates testData;
-
-    public WebDriver getDriver() {
-        return driver;
-    }
-
-    public TestsDates getTestData() {
-        return testData;
-    }
 
     @BeforeMethod
     public void setup() {
@@ -30,13 +24,13 @@ public class ApplicationManager {
 
     @AfterMethod
     public void tearDown() {
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         if (driver != null) {
-//            driver.quit();
+            driver.quit();
         }
     }
 }

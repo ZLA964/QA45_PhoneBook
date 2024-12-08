@@ -23,10 +23,6 @@ public class ContactTests extends ApplicationManager {
 //                new Random().nextInt(1000);
         String email = "frodo_begin" + i + "@gmail.com";
         String password = "P1password!_";
-//        new HomePage(getDriver()).clickBtnLoginHeader();
-//        new LoginPage((getDriver())).typeRegistrationForm(
-//                email, password);
-//        new ContactsPage(getDriver()).clickBtnSignOut();
         UserDto user = new UserDto(email, password);
         new HomePage(getDriver()).clickBtnLoginHeader();
         new LoginPage(getDriver()).typeLoginForm(user);

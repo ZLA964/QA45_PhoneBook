@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -33,22 +32,13 @@ public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//div//div//div//div[@style]")
     WebElement errorMessage;
+ //    "//div[@style='color: red; text-align: center; margin-bottom: 10px;']")
 
- //    @FindBy(xpath = "//div[@style='color: red; text-align: center; margin-bottom: 10px;']")
- //    WebElement errorMessage;
 
     public boolean validateErrorMessageLogin(String text){
         return isElementContainsText(errorMessage, text);
     }
 
-    public void clickBtnRegistration() {
-        btnRegistration.click();
-    }
-
-
-    public void clickBtnLogin() {
-        btnLogin.click();
-    }
 
     public void typeLoginForm(String email, String password) {
         inputEmail.sendKeys(email);
