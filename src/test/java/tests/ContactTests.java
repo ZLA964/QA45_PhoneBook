@@ -48,7 +48,7 @@ public class ContactTests extends ApplicationManager {
 //        new AddContactPage(getDriver()).typeContactData(contactDto);
         new AddContactPage(getDriver()).addNewContact(contactDto);
         String removedPhone = new AddContactPage(getDriver()).removeContact(contactDto);
-//        System.out.println(removedPhone);
+//         System.out.println(removedPhone);
         Assert.assertEquals(contactDto.getPhone(), removedPhone);
     }
 }
