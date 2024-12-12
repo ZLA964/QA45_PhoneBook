@@ -58,6 +58,13 @@ public class AddContactPage extends BasePage {
     @FindBy(xpath = "//div//..//button[text()='Remove']")
     WebElement btnRemove;
 
+    @FindBy(xpath = "//div//..//button[text()='Remove']/..")
+    WebElement contactDetails;
+
+    public String getContactDetails(){
+        return contactDetails.getText();
+    }
+
     @FindBy(xpath = "//a[@href='/contacts']")
     WebElement btnContacts;
 
@@ -123,6 +130,7 @@ public class AddContactPage extends BasePage {
                 return phone;
             }
             int waitNumCards = numCards-1;
+ //           System.out.println(getContactDetails());
             btnRemove.click();
             while (numCards > waitNumCards) {
                 numCards = getNumberOfCards();

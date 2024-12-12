@@ -34,11 +34,9 @@ public class LoginPage extends BasePage {
     WebElement errorMessage;
  //    "//div[@style='color: red; text-align: center; margin-bottom: 10px;']")
 
-
     public boolean validateErrorMessageLogin(String text){
         return isElementContainsText(errorMessage, text);
     }
-
 
     public void typeLoginForm(String email, String password) {
         inputEmail.sendKeys(email);
@@ -55,7 +53,6 @@ public class LoginPage extends BasePage {
         inputEmail.sendKeys(email);
         inputPassword.sendKeys(password);
         btnRegistration.click();
-
     }
 
 

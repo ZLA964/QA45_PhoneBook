@@ -34,4 +34,20 @@ public class BasePage {
                 .until(ExpectedConditions.visibilityOf(element));
     }
 
+    public boolean vakidateUrl(String url, int time){
+        try {
+            return new WebDriverWait(driver, time)
+                    .until(ExpectedConditions.urlContains(url));
+        } catch (org.openqa.selenium.TimeoutException e) {
+            e.printStackTrace();
+            System.out.println("created exception");
+            return false;
+        }
+    }
+
+    public void clickWait(WebElement elementt, int time){
+        new WebDriverWait(driver,time)
+                .until(ExpectedConditions.elementToBeClickable(elementt))
+                .click();
+    }
 }

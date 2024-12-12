@@ -53,12 +53,13 @@ public class ContactsPage extends BasePage {
     }
 
     public void clickBtnSignOut(){
-        pause(3);
-        btnSignOut.click();
+    //    pause(3);
+    //    btnSignOut.click();
+        clickWait(btnSignOut,3);
     }
 
     public boolean isSingOut(){
-       return btnSignOut.isDisplayed();
+        return btnSignOut.isDisplayed();
     }
 
 
