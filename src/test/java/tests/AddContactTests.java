@@ -24,11 +24,10 @@ public class AddContactTests extends ApplicationManager {
        new LoginPage(getDriver()).typeLoginForm(user);
        new ContactsPage(getDriver()).clickBtnAdd();
        addPage = new AddPage(getDriver());
-
    }
 
 
-    @Test
+    @Test(invocationCount = 9)
     public void addNewContactPositiveTest(){
         ContactDtoLombok contact = ContactDtoLombok.builder()
                 .name("Tree")
