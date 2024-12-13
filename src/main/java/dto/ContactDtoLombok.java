@@ -16,4 +16,26 @@ public class ContactDtoLombok {
     private String phone;
     private String address;
     private String description;
+
+    @Override
+    public String toString() {
+        return "ContactDtoLombok{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
+    public String toWebString() {
+        return  name + ' ' + lastName + '\n' +
+                phone + '\n' +
+                email + '\n' +
+                address + '\n' +
+                "Description: " + description + '\n' +
+                "EditRemove";
+    }
 }

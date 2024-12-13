@@ -25,4 +25,14 @@ public class ContactDto {
     public List<String> getContactDetails(){
         return Arrays.asList(name, lastName, phone, email, address, description);
     }
+
+    public String toWebString() {
+        return  name + ' ' + lastName + '\n' +
+                phone + '\n' +
+                email + '\n' +
+                address + '\n' +
+                "Description: " + description + '\n' +
+                "EditRemove";
+    }
+
 }

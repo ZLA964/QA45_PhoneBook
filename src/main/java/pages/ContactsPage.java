@@ -38,6 +38,20 @@ public class ContactsPage extends BasePage {
     @FindBy(xpath = "//button[text()='Remove']")
     WebElement btnRemove;
 
+    @FindBy(xpath = "//button[text()='Edit']")
+    WebElement btnEdit;
+
+    @FindBy(xpath = "//a[@href='/contacts']")
+    WebElement btnContacts;
+
+    public void clickBtnContacts() {
+        btnContacts.click();
+    }
+
+    public void clickBtnEdit(){
+        clickWait(btnEdit,2);
+    }
+
     WebDriverWait wait = new WebDriverWait(driver, 3);
 
     public void waitCutList(String xpath, int initialCounts) {
@@ -60,6 +74,12 @@ public class ContactsPage extends BasePage {
         //       wait.until(driver -> quantityContacts() != counts);
         //   pause(3);
     }
+
+    public void openFistContactForEdit(){
+        clickWait(firstElementContactList, 3);
+        clickWait(btnEdit,1);
+    }
+
 
     public boolean validateLastElementContactList(ContactDtoLombok contact) {
         System.out.println(lastElementContactList.getText());
@@ -94,8 +114,14 @@ public class ContactsPage extends BasePage {
 //        pause(5);
 //        return driver.findElements(By.xpath(
 //                "//div[@class='contact-item_card__2SOIM']")).size();
-        return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-                        By.xpath("//div[@class='contact-item_card__2SOIM']")))
-                .size();
+
+        try {
+            return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+                            By.xpath("//div[@class='contact-item_card__2SOIM']")))
+                    .size();
+        } catch (org.openqa.selenium.TimeoutException e){
+            System.out.println("No contacts in this PhoneBook");
+            return -1;
+        }
     }
 }

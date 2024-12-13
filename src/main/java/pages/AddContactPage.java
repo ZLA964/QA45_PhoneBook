@@ -98,6 +98,8 @@ public class AddContactPage extends BasePage {
         if (contact == null) return;
         typeContactData(contact);
         clickBtnSave();
+        waitNewElementOnPage(lastContactCard, 1);
+//        checkLastContactCard(contact);
     }
 
     public boolean isSaveBtn() {
@@ -105,7 +107,7 @@ public class AddContactPage extends BasePage {
     }
 
     public void clickOnLastContactCard(ContactDto contact) {
-        if (checkLastContactCard(contact)) lastContactCard.click();
+        if (checkLastContactCard(contact))    lastContactCard.click();
         else {
             System.out.println("Wrong contact on card");
         }
@@ -152,6 +154,10 @@ public class AddContactPage extends BasePage {
         alert.accept();
         return alertText.contains(text);
     }
+
+
+    WebDriverWait wait = new WebDriverWait(driver, 3);
+
 
 
 }
