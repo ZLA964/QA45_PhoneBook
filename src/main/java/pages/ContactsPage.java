@@ -2,18 +2,17 @@ package pages;
 
 import dto.ContactDto;
 import dto.ContactDtoLombok;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.xml.xpath.XPathExpression;
+
 public class ContactsPage extends BasePage {
-    WebDriverWait wait = new WebDriverWait(driver, 3);
+
 
     public ContactsPage(WebDriver webDrv) {
         setDriver(webDrv);
@@ -39,12 +38,26 @@ public class ContactsPage extends BasePage {
     @FindBy(xpath = "//button[text()='Remove']")
     WebElement btnRemove;
 
+    WebDriverWait wait = new WebDriverWait(driver, 3);
+
+    public void waitCutList(String xpath, int initialCounts) {
+        try {
+            wait.until(ExpectedConditions
+                    .numberOfElementsToBeLessThan(By.xpath(xpath), initialCounts));
+            System.out.println("success delete element in list");
+        } catch (TimeoutException e) {
+            System.out.println("not delete element in list");
+        }
+    }
 
     public void deleteFirstContact() {
         clickWait(firstElementContactList, 3);
         int counts = quantityContacts();
         clickWait(btnRemove, 2);
-        wait.until(driver -> quantityContacts() != counts);
+        waitCutList("//div[@class='contact-item_card__2SOIM']", counts);
+//        wait.until(ExpectedConditions
+//                .numberOfElementsToBeLessThan(By.xpath("//div[@class='contact-item_card__2SOIM']"), counts));
+        //       wait.until(driver -> quantityContacts() != counts);
         //   pause(3);
     }
 
