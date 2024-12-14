@@ -5,13 +5,11 @@ import dto.ContactDto;
 import dto.UserDto;
 import manager.ApplicationManager;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class EditContactsTests extends ApplicationManager {
     UserDto user = new UserDto("frodo_begin" + 1 + "@gmail.com", "P1password!_");
@@ -67,8 +65,8 @@ public class EditContactsTests extends ApplicationManager {
         editContactPage = new EditContactPage(getDriver());  // take the testing page
     }
 
-
-    @Test
+// This Test was need for debuting, for check idea.
+/*    @Test
     public void checkContactDetailsTest() {
         int index = new Random().nextInt(6);
         contact = contacts.get(index);
@@ -76,13 +74,13 @@ public class EditContactsTests extends ApplicationManager {
         String details = editContactPage.getDetailsContactByIndex(index);
         Assert.assertEquals(details,contactDtoDetails );
     }
-
+*/
 
     @Test
     public void editContactTest_changeName() {
         editContactPage.openFistContactCardForEdit();
         String newName = "Palma";
-        editContactPage.changeContactName(newName);
+        editContactPage.changeName(newName);
         contacts.get(0).setName(newName);
         String[] result = detailsContactsForCheck(0);
         Assert.assertEquals(result[1], result[0]);

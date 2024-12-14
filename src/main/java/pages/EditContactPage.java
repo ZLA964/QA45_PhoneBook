@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EditContactPage extends BasePage {
+    WebDriverWait wait = new WebDriverWait(driver, 3);
 
     public EditContactPage(WebDriver webDrv) {
         setDriver(webDrv);
@@ -44,13 +45,7 @@ public class EditContactPage extends BasePage {
     WebElement btnSaveEditDetails;
 
     private void waitForInputsToLoad() {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfAllElements(inputsForEdit));
-    }
-
-    private void waitToLoadListFor(List<WebElement> elementsList) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.visibilityOfAllElements(elementsList));
     }
 
     private void waitContactChange(String oldDetails, int seconds) {
@@ -62,7 +57,7 @@ public class EditContactPage extends BasePage {
             System.out.println("No contact change!");
         }
     }
-
+// it was variant that not like to repeat six time ))
 /* it was variant that not like to repeat six time ))
     public void changeContactName(String newName){
         String oldDetails = getContactDetails();
@@ -85,12 +80,10 @@ public class EditContactPage extends BasePage {
         btnEdit.click();                            // Click the edit button
         change.run();                               // Execute the provided action (e.g., entering a new name)
         btnSaveEditDetails.click();                 // Click the save button
-        System.out.println(getContactDetails());
         waitContactChange(oldDetails, 5);   // Wait for the contact details to change
-        System.out.println(getContactDetails());
     }
 
-    public void changeContactName(String newName) {
+    public void changeName(String newName) {
         clickAndWait(() -> typeContactNewName(newName));
     }
 
@@ -104,11 +97,15 @@ public class EditContactPage extends BasePage {
     }
 
     private void typeContactNewLastName(String newLastName) {
+        typeNewContactField(1, newLastName);
+// variant
+/* use Keys.
         waitForInputsToLoad();
         WebElement inputLastName = inputsForEdit.get(1);
         inputLastName.sendKeys((Keys.COMMAND + "A"));
         inputLastName.sendKeys(Keys.BACK_SPACE);
         inputLastName.sendKeys(newLastName);
+*/
     }
 
 
@@ -120,7 +117,8 @@ public class EditContactPage extends BasePage {
         typeNewContactField(2, newPhone);
     }
 
-    public void typeContactNewEmail(String newEmail) {
+
+    private void typeContactNewEmail(String newEmail) {
         typeNewContactField(3, newEmail);
     }
 
@@ -128,7 +126,7 @@ public class EditContactPage extends BasePage {
         clickAndWait(()->typeContactNewEmail(newEmail));
     }
 
-    public void typeContactNewAddress(String newAddress) {
+    private void typeContactNewAddress(String newAddress) {
         typeNewContactField(4, newAddress);
     }
 
@@ -136,7 +134,7 @@ public class EditContactPage extends BasePage {
         clickAndWait(()->typeContactNewAddress(newAddress));
     }
 
-    public void typeContactNewDescription(String newDescription) {
+    private void typeContactNewDescription(String newDescription) {
         typeNewContactField(5, newDescription);
     }
 
@@ -154,16 +152,10 @@ public class EditContactPage extends BasePage {
         }
         inputsForEdit.get(0).sendKeys(contactDto.getName());
         inputsForEdit.get(1).clear();         // must clear after each sendKeys !!!
-        inputsForEdit.get(2).clear();
-        inputsForEdit.get(3).clear();
-        inputsForEdit.get(4).clear();
         inputsForEdit.get(1).sendKeys(contactDto.getLastName());
         inputsForEdit.get(2).clear();
-        inputsForEdit.get(3).clear();
-        inputsForEdit.get(4).clear();
         inputsForEdit.get(2).sendKeys(contactDto.getPhone());
         inputsForEdit.get(3).clear();
-        inputsForEdit.get(4).clear();
         inputsForEdit.get(3).sendKeys(contactDto.getEmail());
         inputsForEdit.get(4).clear();
         inputsForEdit.get(4).sendKeys(contactDto.getAddress());
@@ -174,24 +166,12 @@ public class EditContactPage extends BasePage {
         clickAndWait(() -> typeNewContactDetails(contactDto));
     }
 
-
     public String getContactDetails() {
         waitNewElementOnPage(btnEdit, 3);
         return contactDetails.getText();
     }
 
-    WebDriverWait wait = new WebDriverWait(driver, 3);
 
-//    public int quantityContacts() {
-//        try {
-//            return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-//                            By.xpath("//div[@class='contact-item_card__2SOIM']")))
-//                    .size();
-//        } catch (org.openqa.selenium.TimeoutException e) {
-//            System.out.println("No contacts in this PhoneBook");
-//            return -1;
-//        }
-//    }
 
     public ArrayList<WebElement> contactsList() {
         return new ArrayList<>(wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
@@ -199,19 +179,16 @@ public class EditContactPage extends BasePage {
     }
 
     public void openFistContactCardForEdit() {
-        clickWait(firstContactCard, 3);
-//        clickWait(btnEdit,1);
+        clickWait(firstContactCard, 0);
     }
 
     public void openLastContactCardForEdit() {
-        clickWait(lastContactCard, 3);
-//        clickWait(btnEdit, 1);
+        clickWait(lastContactCard, 0);
     }
 
     public void openContactCardByIndexForEdit(int index) {
         WebElement indexContactCard = contactsList().get(index);
         clickWait(indexContactCard, 0);
-//        clickWait(btnEdit, 0);
     }
 
     public void openContactCardByIndex(int index) {
@@ -223,6 +200,5 @@ public class EditContactPage extends BasePage {
         openContactCardByIndex(index);
         return getContactDetails();
     }
-
 
 }

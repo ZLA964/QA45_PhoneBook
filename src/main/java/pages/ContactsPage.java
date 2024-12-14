@@ -58,7 +58,7 @@ public class ContactsPage extends BasePage {
         try {
             wait.until(ExpectedConditions
                     .numberOfElementsToBeLessThan(By.xpath(xpath), initialCounts));
-            System.out.println("success delete element in list");
+//              System.out.println("success delete element in list");
         } catch (TimeoutException e) {
             System.out.println("not delete element in list");
         }
