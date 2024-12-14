@@ -49,9 +49,9 @@ public class BasePage {
         }
     }
 
-    public void clickWait(WebElement elementt, int time){
+    public void clickWait(WebElement element, int time){
         new WebDriverWait(driver,time)
-                .until(ExpectedConditions.elementToBeClickable(elementt))
+                .until(ExpectedConditions.elementToBeClickable(element))
                 .click();
     }
 }
