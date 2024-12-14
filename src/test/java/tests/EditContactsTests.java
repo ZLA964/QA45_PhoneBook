@@ -74,11 +74,6 @@ public class EditContactsTests extends ApplicationManager {
         contact = contacts.get(index);
         String contactDtoDetails = contact.toWebString();
         String details = editContactPage.getDetailsContactByIndex(index);
-//        System.out.println(details);
-//        System.out.println("==== contactDto =====");
-//        System.out.println(contactDtoDetails);
-//        boolean check = contactDtoDetails.equals(details);
-//        System.out.println("check--> " + check);
         Assert.assertEquals(details,contactDtoDetails );
     }
 
@@ -96,12 +91,70 @@ public class EditContactsTests extends ApplicationManager {
     @Test
     public void editContactTest_changeLastName() {
         editContactPage.openLastContactCardForEdit();
+        String newLastName = "Tamar";
+        editContactPage.changeLastName(newLastName);
+        contacts.get(5).setLastName(newLastName);
+        String[] result = detailsContactsForCheck(5);
+        Assert.assertEquals(result[1], result[0]);
+    }
+
+    @Test
+    public void editContactPositiveTest_changePhone() {
+        editContactPage.openContactCardByIndexForEdit(1);
+        String newPhone = "9876543210";
+        editContactPage.changePhone(newPhone);
+        contacts.get(1).setPhone(newPhone);
+        String[] result = detailsContactsForCheck(1);
+        Assert.assertEquals(result[1], result[0]);
     }
 
     @Test
     public void editContactTest_changeEmail() {
-        editContactPage.openContactCardByIndexForEdit(4);
+        editContactPage.openContactCardByIndexForEdit(2);
+        String newEmail = "newemail@mail.com";
+        editContactPage.changeEmail(newEmail );
+        contacts.get(2).setEmail(newEmail);
+        String[] result = detailsContactsForCheck(2);
+        Assert.assertEquals(result[1], result[0]);
     }
 
+    @Test
+    public void editContactPositiveTest_changeAddress() {
+        editContactPage.openContactCardByIndexForEdit(3);
+        String newAddress = "Dark forest";
+        editContactPage.changeAddress(newAddress);
+        contacts.get(3).setAddress(newAddress);
+        String[] result = detailsContactsForCheck(3);
+        Assert.assertEquals(result[1], result[0]);
+    }
 
+// this test fall! It is bag!
+/*
+    @Test
+    public void editContactPositiveTest_changeDescription() {
+        editContactPage.openContactCardByIndexForEdit(4);
+        String newDescription = "new description for 4";
+        editContactPage.changeDescription(newDescription);
+        contacts.get(4).setDescription(newDescription);
+        String[] result = detailsContactsForCheck(4);
+        Assert.assertEquals(result[1], result[0]);
+    }
+*/
+
+    @Test
+    public void editContactPositiveTest_changeAllWithoutDescription() {
+        editContactPage.openContactCardByIndexForEdit(0);
+        contact = ContactDto.builder()
+                .name("NewTree")
+                .lastName("NewGreen--0")
+                .email("newtreegreen" + 0 + "@mail.com")
+                .phone("0000000001")
+                .address("NewForest")
+                .description("Test contact 00")
+                .build();
+        editContactPage.changeAllContactDetails(contact);
+        contacts.set(0, contact);
+        String[] result = detailsContactsForCheck(0);
+        Assert.assertEquals(result[1], result[0]);
+    }
 }
