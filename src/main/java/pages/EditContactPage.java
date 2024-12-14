@@ -65,8 +65,10 @@ public class EditContactPage extends BasePage {
         return oldDetails.equals(getContactDetails());
     }
 
-    public void waitContactChange(){
-
+    public void waitContactChange(String oldDetails, int seconds){
+        new WebDriverWait(driver, seconds)
+                .until(driver ->
+                        !oldDetails.equals(getContactDetails()));
     }
 
     public void changeContactName(String newName){
@@ -75,9 +77,7 @@ public class EditContactPage extends BasePage {
         typeContactNewName(newName);
         btnSaveEditDetails.click();
 //        while (detailsContactsCheckNotChange(oldDetails));
-        new WebDriverWait(driver, 3)
-                .until(driver ->
-                        !oldDetails.equals(getContactDetails()));
+        waitContactChange(oldDetails,1);
     }
 
 
