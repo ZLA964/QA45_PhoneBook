@@ -33,9 +33,9 @@ public class AddPage extends BasePage{
     @FindBy(xpath = "//b/..")
     WebElement btnSave;
 
-    @FindBy(xpath = "//div[h2 and h3]")
+/* /    @FindBy(xpath = "//div[h2 and h3]")
     WebElement contactCard;
-
+*/
 
 
     public void clickBtnSave(){
@@ -51,13 +51,14 @@ public class AddPage extends BasePage{
         inputDescription.sendKeys(contact.getDescription());
     }
 
-    public boolean isSaveBtn() {
+/* /    public boolean isSaveBtn() {
         pause(1);
         return btnSave.isDisplayed();
     }
+*/
 
     public boolean validateContacts(){
-        return  vakidateUrl("contacts", 5);
+        return  validateUrl("contacts", 5);
     }
 
     public String closeAlertAndReturnText() {

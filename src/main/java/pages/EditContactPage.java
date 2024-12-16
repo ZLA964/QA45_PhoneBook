@@ -2,7 +2,6 @@ package pages;
 
 import dto.ContactDto;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,8 +25,9 @@ public class EditContactPage extends BasePage {
     @FindBy(xpath = "//div[h2 and h3]")
     WebElement firstContactCard;
 
-    @FindBy(xpath = "//div[h2 and h3]")
+/* /   @FindBy(xpath = "//div[h2 and h3]")
     List<WebElement> contactCardsList;
+*/
 
     @FindBy(xpath = "//div[h2 and h3][last()]")
     WebElement lastContactCard;
@@ -48,17 +48,17 @@ public class EditContactPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfAllElements(inputsForEdit));
     }
 
-    private void waitContactChange(String oldDetails, int seconds) {
+    private void waitContactChange(String oldDetails) {
         try {
-            new WebDriverWait(driver, seconds)
+            new WebDriverWait(driver, 3)
                     .until(driver ->
                             !oldDetails.equals(getContactDetails()));
         } catch (Exception e) {
             System.out.println("No contact change!");
         }
     }
-// it was variant that not like to repeat six time ))
-/* it was variant that not like to repeat six time ))
+// it was variant that not like to repeat six time
+/* it was variant that not like to repeat six time
     public void changeContactName(String newName){
         String oldDetails = getContactDetails();
         btnEdit.click();
@@ -80,7 +80,7 @@ public class EditContactPage extends BasePage {
         btnEdit.click();                            // Click the edit button
         change.run();                               // Execute the provided action (e.g., entering a new name)
         btnSaveEditDetails.click();                 // Click the save button
-        waitContactChange(oldDetails, 5);   // Wait for the contact details to change
+        waitContactChange(oldDetails);   // Wait for the contact details to change
     }
 
     public void changeName(String newName) {
@@ -134,13 +134,17 @@ public class EditContactPage extends BasePage {
         clickAndWait(()->typeContactNewAddress(newAddress));
     }
 
-    private void typeContactNewDescription(String newDescription) {
+// BAG in Site!
+/* /   private void typeContactNewDescription(String newDescription) {
         typeNewContactField(5, newDescription);
     }
+*/
 
-    public void changeDescription(String newDescription) {
+// BAG in Site!
+/*/    public void changeDescription(String newDescription) {
         clickAndWait(()->typeContactNewDescription(newDescription));
     }
+*/
 
     public void typeNewContactDetails(ContactDto contactDto) {
         waitForInputsToLoad();

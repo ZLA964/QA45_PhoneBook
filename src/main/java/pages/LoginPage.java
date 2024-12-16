@@ -55,10 +55,6 @@ public class LoginPage extends BasePage {
         btnRegistration.click();
     }
 
-
-
-
-
     public void closeAlert() {
         Alert alert = new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.alertIsPresent());

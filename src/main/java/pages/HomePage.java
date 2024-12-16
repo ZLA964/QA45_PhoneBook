@@ -27,6 +27,6 @@ public class HomePage extends BasePage {
     public void clickBtnAbout(){
         btnAbout.click();
     }
-    not usee also
+    not use also
  */
 }

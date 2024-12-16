@@ -32,9 +32,9 @@ public class AddContactPage extends BasePage {
     @FindBy(xpath = "//div[h2 and h3]")
     List<WebElement> cards;
 
-    public WebElement getLastCard() {
+/*/    public WebElement getLastCard() {
         return cards.get(cards.size() - 1);
-    }
+    } */
 
     public int getNumberOfCards() {
         return cards.size();
@@ -43,14 +43,16 @@ public class AddContactPage extends BasePage {
     @FindBy(xpath = "//div[h2 and h3][last()]")
     WebElement lastContactCard;
 
-    @FindBy(xpath = "//div[h2 and h3]//h2")
+/* /    @FindBy(xpath = "//div[h2 and h3]//h2")
     WebElement contactName;
+*/
 
     @FindBy(xpath = "//div[h2 and h3][last()]//h2")
     WebElement lastContactName;
 
-    @FindBy(xpath = "//div[h2 and h3]//h3")
+/* /     @FindBy(xpath = "//div[h2 and h3]//h3")
     WebElement contactPhone;
+*/
 
     @FindBy(xpath = "//div[h2 and h3][last()]//h3")
     WebElement lastContactPhone;
@@ -58,12 +60,13 @@ public class AddContactPage extends BasePage {
     @FindBy(xpath = "//div//..//button[text()='Remove']")
     WebElement btnRemove;
 
-    @FindBy(xpath = "//div//..//button[text()='Remove']/..")
+/*/    @FindBy(xpath = "//div//..//button[text()='Remove']/..")
     WebElement contactDetails;
-
-    public String getContactDetails(){
+*/
+/* /    public String getContactDetails(){
         return contactDetails.getText();
     }
+*/
 
     @FindBy(xpath = "//a[@href='/contacts']")
     WebElement btnContacts;
@@ -150,14 +153,14 @@ public class AddContactPage extends BasePage {
             return false;
         }
         String alertText = alert.getText();
-  //  print if need full alert text      System.out.println(alertText);
+//  print if you need full alert text      System.out.println(alertText);
         alert.accept();
         return alertText.contains(text);
     }
 
-
+/* /
     WebDriverWait wait = new WebDriverWait(driver, 3);
-
+*/
 
 
 }

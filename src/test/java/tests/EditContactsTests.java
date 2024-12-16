@@ -35,7 +35,7 @@ public class EditContactsTests extends ApplicationManager {
             contact = ContactDto.builder()
                     .name("Tree")
                     .lastName("Green--0" + i)
-                    .email("treegreen" + i + "@mail.com")
+                    .email("treeGreen" + i + "@mail.com")
                     .phone(i + "023456789")
                     .address("Forest")
                     .description("Test contact 0" + i)
@@ -65,8 +65,8 @@ public class EditContactsTests extends ApplicationManager {
         editContactPage = new EditContactPage(getDriver());  // take the testing page
     }
 
-// This Test was need for debuting, for check idea.
-/*    @Test
+// This Test was needing for debuting, for check idea.
+/* /   @Test
     public void checkContactDetailsTest() {
         int index = new Random().nextInt(6);
         contact = contacts.get(index);
@@ -127,7 +127,7 @@ public class EditContactsTests extends ApplicationManager {
     }
 
 // this test fall! It is bag!
-/*
+/* /
     @Test
     public void editContactPositiveTest_changeDescription() {
         editContactPage.openContactCardByIndexForEdit(4);
@@ -145,7 +145,7 @@ public class EditContactsTests extends ApplicationManager {
         contact = ContactDto.builder()
                 .name("NewTree")
                 .lastName("NewGreen--0")
-                .email("newtreegreen" + 0 + "@mail.com")
+                .email("newTreeGreen" + 0 + "@mail.com")
                 .phone("0000000001")
                 .address("NewForest")
                 .description("Test contact 00")

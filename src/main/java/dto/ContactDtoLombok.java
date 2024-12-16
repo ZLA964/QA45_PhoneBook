@@ -30,6 +30,7 @@ public class ContactDtoLombok {
                 '}';
     }
 
+/*  /
     public String toWebString() {
         return  name + ' ' + lastName + '\n' +
                 phone + '\n' +
@@ -38,4 +39,7 @@ public class ContactDtoLombok {
                 "Description: " + description + '\n' +
                 "EditRemove";
     }
+*/
+
+
 }

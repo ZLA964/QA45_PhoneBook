@@ -45,10 +45,10 @@ public class AddContactTests extends ApplicationManager {
     @Test
     public void addNewContactNegativeTest_emptyName(){
         ContactDtoLombok contact = ContactDtoLombok.builder()
-                .name("Tree")
+                .name("")
                 .lastName("Green1023")
                 .email("treegreen@mail.com")
-                .phone("12347890")
+                .phone("1234567890")
                 .address("Forest")
                 .description("Test Contact 01")
                 .build();

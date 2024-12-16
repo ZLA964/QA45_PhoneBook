@@ -7,14 +7,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
 public class BasePage {
 
 
     @Setter
     static WebDriver driver;
-
+/*
     public void pause(int time){
         try {
             Thread.sleep(time*1000L);
@@ -22,7 +20,7 @@ public class BasePage {
             throw new RuntimeException(e);
         }
     }
-
+*/
     public boolean isElementContainsText(WebElement element, String text){
         return element.getText().contains(text);
     }
@@ -38,12 +36,12 @@ public class BasePage {
                 .until(ExpectedConditions.visibilityOf(element));
     }
 
-    public boolean vakidateUrl(String url, int time){
+    public boolean validateUrl(String url, int time){
         try {
             return new WebDriverWait(driver, time)
                     .until(ExpectedConditions.urlContains(url));
         } catch (org.openqa.selenium.TimeoutException e) {
-            e.printStackTrace();
+// /            e.printStackTrace();
             System.out.println("created exception");
             return false;
         }
