@@ -12,7 +12,9 @@ public class BasePage {
 
     @Setter
     static WebDriver driver;
-/*
+
+// PAUSE
+    /* /
     public void pause(int time){
         try {
             Thread.sleep(time*1000L);
@@ -21,6 +23,7 @@ public class BasePage {
         }
     }
 */
+
     public boolean isElementContainsText(WebElement element, String text){
         return element.getText().contains(text);
     }

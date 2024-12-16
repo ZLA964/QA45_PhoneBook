@@ -9,11 +9,9 @@ import org.testng.annotations.Test;
 import pages.*;
 
 
-//import java.util.Random;
-
 public class ContactTests extends ApplicationManager {
     ContactDto contactDto;
-    UserDto user = new UserDto("frodo_begin" + 1 + "@gmail.com", "P1password!_");
+//    UserDto user = new UserDto("frodo_begin" + 1 + "@gmail.com", "P1password!_");
     AddContactPage addContactPage;
 
     @BeforeMethod
@@ -46,9 +44,9 @@ public class ContactTests extends ApplicationManager {
     @Test(priority = -1)
     void addFirstContactPositiveTest() {
         addContactPage.addNewContact(contactDto);
-//        String removedPhone = addContactPage.removeLastContact(contactDto);
-//        System.out.println(removedPhone);
-//        Assert.assertEquals(contactDto.getPhone(), removedPhone);
+// /       String removedPhone = addContactPage.removeLastContact(contactDto);
+// /       System.out.println(removedPhone);
+// /       Assert.assertEquals(contactDto.getPhone(), removedPhone);
     }
 
     @Test
@@ -95,7 +93,7 @@ public class ContactTests extends ApplicationManager {
         addContactPage.typeContactData(contactDto);
         addContactPage.clickBtnSave();
         if (addContactPage.isSaveBtn()) {
-            Assert.assertTrue(!addContactPage.isContactCard());
+            Assert.assertFalse(addContactPage.isContactCard());
         } else {
             System.out.println("Test failed.");
             Assert.fail();
@@ -107,12 +105,12 @@ public class ContactTests extends ApplicationManager {
         contactDto.setLastName("");
         addContactPage.typeContactData(contactDto);
         addContactPage.clickBtnSave();
-        Assert.assertTrue(!addContactPage.isContactCard());
+        Assert.assertFalse(addContactPage.isContactCard());
     }
 
     @Test
     public void addNewContactNegativeTest_wrongEmail() {
-        contactDto.setEmail("treegreenmail.com");
+        contactDto.setEmail("treeGreenmail.com");
         addContactPage.typeContactData(contactDto);
         addContactPage.clickBtnSave();
         Assert.assertTrue(addContactPage
@@ -142,7 +140,7 @@ public class ContactTests extends ApplicationManager {
         contactDto.setAddress("");
         addContactPage.typeContactData(contactDto);
         addContactPage.clickBtnSave();
-        Assert.assertTrue(!addContactPage.isContactCard());
+        Assert.assertFalse(addContactPage.isContactCard());
     }
 
     @Test(priority = 1)

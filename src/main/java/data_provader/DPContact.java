@@ -45,7 +45,7 @@ public class DPContact {
     }
 
     @DataProvider
-    public Iterator<ContactDtoLombok> newContactDPFile() {
+    public Iterator<ContactDtoLombok> newContactsDPFile() {
         List<ContactDtoLombok> contactList = new ArrayList<>();
         BufferedReader bufferedReader;
         try {

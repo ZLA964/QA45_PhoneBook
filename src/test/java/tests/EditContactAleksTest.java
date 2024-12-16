@@ -46,9 +46,10 @@ public class EditContactAleksTest extends ApplicationManager {
         Assert.assertTrue(contactsPage.validateCardContact(contact));
     }
 
-    @Test(dataProvider = "newContactDPFile", dataProviderClass = DPContact.class)
-    public void editContactTestDPFromFile(ContactDtoLombok contact){
+    @Test(dataProvider = "newContactsDPFile", dataProviderClass = DPContact.class)
+    public void editContactTestDPFile(ContactDtoLombok contact){
         contactsPage.editContact(contact);
         Assert.assertTrue(contactsPage.validateCardContact(contact));
     }
+
 }

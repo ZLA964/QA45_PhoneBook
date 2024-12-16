@@ -5,12 +5,11 @@ import manager.ApplicationManager;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.AddPage;
 import pages.ContactsPage;
 import pages.HomePage;
 import pages.LoginPage;
 
-public class DelateContactTests extends ApplicationManager {
+public class DeleteContactTests extends ApplicationManager {
     UserDto user = new UserDto( "frodo_begin" + 1 + "@gmail.com", "P1password!_");
     ContactsPage contactsPage;
 

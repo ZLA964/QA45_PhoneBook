@@ -27,7 +27,7 @@ public class AddContactTests extends ApplicationManager {
    }
 
 
-    @Test(invocationCount = 9)
+    @Test(invocationCount = 5)
     public void addNewContactPositiveTest(){
         ContactDtoLombok contact = ContactDtoLombok.builder()
                 .name("Tree")

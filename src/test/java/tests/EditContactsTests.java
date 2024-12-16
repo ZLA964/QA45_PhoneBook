@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 
 public class EditContactsTests extends ApplicationManager {
@@ -45,6 +46,7 @@ public class EditContactsTests extends ApplicationManager {
         }
     }
 
+    @Nonnull
     private String[] detailsContactsForCheck(int index) {
         String contactDtoDetails = contacts.get(index).toWebString();
         String details = editContactPage.getDetailsContactByIndex(index);
@@ -61,7 +63,8 @@ public class EditContactsTests extends ApplicationManager {
             addSixTestContacts();         // add new 6 contacts for change tests
             isSixContacts = true;
         }
-        addContactPage.clickBtnContacts();
+        // addContactPage.clickBtnContacts();  // not need !!  not worked with   driver.quit();  in ApplicationManager !!
+
         editContactPage = new EditContactPage(getDriver());  // take the testing page
     }
 

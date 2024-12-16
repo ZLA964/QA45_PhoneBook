@@ -9,7 +9,7 @@ public class RandomUtils {
     public static String generateString(int length){
         String characters = "abcdefghijklmnopqrstuvwxyz0123456789";
         char[] randomString = new char[length];
-        int index = 0;
+        int index;
         int charLength = characters.length();
         for(int i =0; i < length; i++){
             index = random.nextInt(charLength);
@@ -19,7 +19,7 @@ public class RandomUtils {
     }
 
     public static String generateEmail(int length){
-        String[] domains ={"gmail.com","mail.ru", "yaho.com", "yandex.ru"};
+        String[] domains ={"gmail.com","mail.ru", "yahoo.com", "yandex.ru"};
         String domain = domains[random.nextInt(domains.length)];
         return (generateString(length)+"@"+ domain);
     }
@@ -27,7 +27,7 @@ public class RandomUtils {
     public static String generatePhone(int length){
         String characters = "0123456789";
         char[] randomString = new char[length];
-        int index = 0;
+        int index;
         int charLength = characters.length();
         for(int i =0; i < length; i++){
             index = random.nextInt(charLength);
