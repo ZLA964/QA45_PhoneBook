@@ -1,5 +1,6 @@
 package data_provader;
 
+import dto.ContactDto;
 import dto.ContactDtoLombok;
 import org.testng.annotations.DataProvider;
 
@@ -14,6 +15,29 @@ import static utils.RandomUtils.*;
 import static utils.RandomUtils.generateString;
 
 public class DPContact {
+
+    @DataProvider
+    public ContactDto[] contactsDPforAddTest(){
+        int countOfContacts = 7;
+        int nameLength = 5;
+        int lastNameLength = 5;
+        int phoneLength = 10;
+        int addressLength = 14;
+        int emailLength =7;
+        ContactDto[] contacts = new ContactDto[countOfContacts];
+        for(int i =0; i<countOfContacts; i++){
+            contacts[i] = ContactDto.builder()
+                    .name(generateString(nameLength))
+                    .lastName(generateString(lastNameLength))
+                    .email(generateEmail(emailLength))
+                    .phone(generatePhone(phoneLength))
+                    .address("Address " + generateString(addressLength))
+                    .description("test contact num "+ i)
+                    .build();
+        }
+        return contacts;
+    }
+
 
     @DataProvider
     public ContactDtoLombok[] newContactsDP() {

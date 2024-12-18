@@ -12,7 +12,7 @@ import pages.ContactsPage;
 import pages.HomePage;
 import pages.LoginPage;
 
-public class AddContactTests extends ApplicationManager {
+public class AddContactAleksTests extends ApplicationManager {
     UserDto user = new UserDto( "frodo_begin" + 1 + "@gmail.com", "P1password!_");
     AddPage addPage;
 

@@ -107,8 +107,10 @@ public class ContactsPage extends BasePage {
     }
 
     public boolean validateLastElementContactList(ContactDto contact) {
-        System.out.println(lastElementContactList.getText());
-        return lastElementContactList.getText().contains(contact.getName());
+//        System.out.println(lastElementContactList.getText());
+        return lastElementContactList.getText().contains(contact.getName())
+                &&
+                lastElementContactList.getText().contains(contact.getPhone());
     }
 
     public void clickBtnAdd() {

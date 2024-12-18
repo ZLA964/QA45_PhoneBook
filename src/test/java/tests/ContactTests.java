@@ -1,10 +1,13 @@
 package tests;
 
+import data_provader.DPContact;
 import dto.ContactDto;
+
 import dto.UserDto;
 import manager.ApplicationManager;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+
 import org.testng.annotations.Test;
 import pages.*;
 
@@ -13,6 +16,15 @@ public class ContactTests extends ApplicationManager {
     ContactDto contactDto;
 //    UserDto user = new UserDto("frodo_begin" + 1 + "@gmail.com", "P1password!_");
     AddContactPage addContactPage;
+    boolean isFirstTimeBeforeMethod = true;
+
+    private void deleteAllContacts() {
+        ContactsPage contactsPage = new ContactsPage(getDriver());
+        int size = contactsPage.quantityContacts();
+        for (int i = 0; i < size; i++) {
+            contactsPage.deleteFirstContact();
+        }
+    }
 
     @BeforeMethod
     public void loginRegisteredUser() {
@@ -23,6 +35,10 @@ public class ContactTests extends ApplicationManager {
         UserDto user = new UserDto(email, password);
         new HomePage(getDriver()).clickBtnLoginHeader();
         new LoginPage(getDriver()).typeLoginForm(user);
+        if(isFirstTimeBeforeMethod) {
+            deleteAllContacts();
+            isFirstTimeBeforeMethod=false;
+        }
         new ContactsPage(getDriver()).setBtnAddContact();
         addContactPage = new AddContactPage(getDriver());
         contactDto = ContactDto.builder()
@@ -44,9 +60,7 @@ public class ContactTests extends ApplicationManager {
     @Test(priority = -1)
     void addFirstContactPositiveTest() {
         addContactPage.addNewContact(contactDto);
-// /       String removedPhone = addContactPage.removeLastContact(contactDto);
-// /       System.out.println(removedPhone);
-// /       Assert.assertEquals(contactDto.getPhone(), removedPhone);
+        Assert.assertTrue(new ContactsPage(getDriver()).validateLastElementContactList(contactDto));
     }
 
     @Test
@@ -55,6 +69,14 @@ public class ContactTests extends ApplicationManager {
         addContactPage.typeContactData(contactDto);
         addContactPage.clickBtnSave();
         Assert.assertTrue(new ContactsPage(getDriver()).validateLastElementContactList(contactDto));
+    }
+
+    @Test(dataProvider = "contactsDPforAddTest", dataProviderClass = DPContact.class)
+    public void addNewContactPositiveTest_DP(ContactDto contact) {
+        System.out.println("test 0-6");
+        addContactPage.typeContactData(contact);
+        addContactPage.clickBtnSave();
+        Assert.assertTrue(new ContactsPage(getDriver()).validateLastElementContactList(contact));
     }
 
     @Test
