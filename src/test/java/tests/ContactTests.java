@@ -36,7 +36,7 @@ public class ContactTests extends ApplicationManager {
         new HomePage(getDriver()).clickBtnLoginHeader();
         new LoginPage(getDriver()).typeLoginForm(user);
         if(isFirstTimeBeforeMethod) {
-            deleteAllContacts();
+//            deleteAllContacts();
             isFirstTimeBeforeMethod=false;
         }
         new ContactsPage(getDriver()).setBtnAddContact();
@@ -79,6 +79,22 @@ public class ContactTests extends ApplicationManager {
         Assert.assertTrue(new ContactsPage(getDriver()).validateLastElementContactList(contact));
     }
 
+    @Test(dataProvider = "contactsDPforAddTest", dataProviderClass = DPContact.class)
+    public void addNewContactPositiveTest_DP_noDescription(ContactDto ContactDto) {
+        contactDto.setDescription("");
+        addContactPage.typeContactData(contactDto);
+        addContactPage.clickBtnSave();
+        Assert.assertTrue(new ContactsPage(getDriver()).validateLastElementContactList(contactDto));
+    }
+
+    @Test(dataProvider = "contactsDPforAddTest", dataProviderClass = DPContact.class)
+    public void addNewContactPositiveTest_DP_noEmail(ContactDto contactDto) {
+        contactDto.setEmail("");
+        addContactPage.typeContactData(contactDto);
+        addContactPage.clickBtnSave();
+        Assert.assertTrue(new ContactsPage(getDriver()).validateLastElementContactList(contactDto));
+    }
+
     @Test
     public void addNewContactPositiveTest_noDescription() {
         contactDto.setDescription("");
@@ -109,17 +125,63 @@ public class ContactTests extends ApplicationManager {
         }
     }
 
+    @Test(dataProvider = "newContactsAddDPFile", dataProviderClass = DPContact.class)
+    public void addNewContactNegativeTest_DP_noName(ContactDto contactDto) {
+        contactDto.setName("");
+        addContactPage.typeContactData(contactDto);
+        addContactPage.clickBtnSave();
+        Assert.assertFalse(addContactPage.isContactCard());
+    }
+
+    @Test(dataProvider = "newContactsAddDPFile", dataProviderClass = DPContact.class)
+    public void addNewContactNegativeTest_DP_noLastName(ContactDto contactDto) {
+        contactDto.setLastName("");
+        addContactPage.typeContactData(contactDto);
+        addContactPage.clickBtnSave();
+        Assert.assertFalse(addContactPage.isContactCard());
+    }
+
+    @Test(dataProvider = "newContactsAddDPFile", dataProviderClass = DPContact.class)
+    public void addNewContactNegativeTest_DP_wrongEmail(ContactDto contactDto) {
+        contactDto.setEmail("treeGreenmail.com");
+        addContactPage.typeContactData(contactDto);
+        addContactPage.clickBtnSave();
+        Assert.assertTrue(addContactPage
+                .isAlertCorrect("Email not valid: must be a well-formed"));
+    }
+
+    @Test(dataProvider = "newContactsAddDPFile", dataProviderClass = DPContact.class)
+    public void addNewContactNegativeTest_DP_noPhone(ContactDto contactDto) {
+        contactDto.setPhone("");
+        addContactPage.typeContactData(contactDto);
+        addContactPage.clickBtnSave();
+        Assert.assertTrue(addContactPage
+                .isAlertCorrect("Phone not valid: Phone number must"));
+    }
+
+    @Test(dataProvider = "newContactsAddDPFile", dataProviderClass = DPContact.class)
+    public void addNewContactNegativeTest_DP_wrongPhone(ContactDto contactDto) {
+        contactDto.setPhone("12as567890");
+        addContactPage.typeContactData(contactDto);
+        addContactPage.clickBtnSave();
+        Assert.assertTrue(addContactPage
+                .isAlertCorrect("Phone not valid: Phone number must"));
+    }
+
+    @Test(dataProvider = "newContactsAddDPFile", dataProviderClass = DPContact.class)
+    public void addNewContactNegativeTest_DP_noAddress(ContactDto contactDto) {
+        contactDto.setAddress("");
+        addContactPage.typeContactData(contactDto);
+        addContactPage.clickBtnSave();
+        Assert.assertFalse(addContactPage.isContactCard());
+    }
+
     @Test
     public void addNewContactNegativeTest_noName() {
         contactDto.setName("");
         addContactPage.typeContactData(contactDto);
         addContactPage.clickBtnSave();
-        if (addContactPage.isSaveBtn()) {
-            Assert.assertFalse(addContactPage.isContactCard());
-        } else {
-            System.out.println("Test failed.");
-            Assert.fail();
-        }
+        Assert.assertFalse(addContactPage.isContactCard());
     }
 
     @Test
@@ -167,6 +229,7 @@ public class ContactTests extends ApplicationManager {
 
     @Test(priority = 1)
     public void removeLastContactPositiveTest() {
+        addContactPage.addNewContact(contactDto);  // need for check true last contact )
         System.out.println("test 10");
         addContactPage.clickBtnContacts();
         if (addContactPage.isContactCard()) {

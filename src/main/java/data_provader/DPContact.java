@@ -18,7 +18,7 @@ public class DPContact {
 
     @DataProvider
     public ContactDto[] contactsDPforAddTest(){
-        int countOfContacts = 7;
+        int countOfContacts = 5;
         int nameLength = 5;
         int lastNameLength = 5;
         int phoneLength = 10;
@@ -38,6 +38,32 @@ public class DPContact {
         return contacts;
     }
 
+    @DataProvider
+    public Iterator<ContactDto> newContactsAddDPFile() {
+        List<ContactDto> contactList = new ArrayList<>();
+        BufferedReader bufferedReader;
+        try {
+            bufferedReader = new BufferedReader(new FileReader(
+                    "src/main/resources/data_provider/testContactsData .csv"));
+
+            String line = bufferedReader.readLine();
+            while (line != null) {
+                String[] splitArray = line.split(",");
+                contactList.add(ContactDto.builder()
+                        .name(splitArray[0])
+                        .lastName(splitArray[1])
+                        .phone(splitArray[2])
+                        .email(splitArray[3])
+                        .address(splitArray[4])
+                        .description(splitArray[5])
+                        .build());
+                line = bufferedReader.readLine();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return contactList.listIterator();
+    }
 
     @DataProvider
     public ContactDtoLombok[] newContactsDP() {

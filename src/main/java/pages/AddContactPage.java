@@ -26,7 +26,8 @@ public class AddContactPage extends BasePage {
     @FindBy(xpath = "//button[b]")
     WebElement btnSave;
     public void clickBtnSave() {
-        btnSave.click();
+//        btnSave.click();
+        clickWait(btnSave, 3);
     }
 
     @FindBy(xpath = "//div[h2 and h3]")
@@ -129,7 +130,7 @@ public class AddContactPage extends BasePage {
         try {
             clickOnLastContactCard(contact);
             phone = lastContactPhone.getText();
-            waitNewElementOnPage("//div//..//button[text()='Remove']", 1);
+            waitNewElementOnPage("//div//..//button[text()='Remove']", 5);
             int numCards = getNumberOfCards();
             if(numCards==0) {
                 return phone;
