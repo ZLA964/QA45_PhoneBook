@@ -36,7 +36,7 @@ public class ContactTests extends ApplicationManager {
         new HomePage(getDriver()).clickBtnLoginHeader();
         new LoginPage(getDriver()).typeLoginForm(user);
         if(isFirstTimeBeforeMethod) {
-//            deleteAllContacts();
+            deleteAllContacts();
             isFirstTimeBeforeMethod=false;
         }
         new ContactsPage(getDriver()).setBtnAddContact();
@@ -80,7 +80,7 @@ public class ContactTests extends ApplicationManager {
     }
 
     @Test(dataProvider = "contactsDPforAddTest", dataProviderClass = DPContact.class)
-    public void addNewContactPositiveTest_DP_noDescription(ContactDto ContactDto) {
+    public void addNewContactPositiveTest_DP_noDescription(ContactDto contactDto) {
         contactDto.setDescription("");
         addContactPage.typeContactData(contactDto);
         addContactPage.clickBtnSave();
