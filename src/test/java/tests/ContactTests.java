@@ -130,7 +130,6 @@ public class ContactTests extends ApplicationManager {
         contactDto.setName("");
         addContactPage.typeContactData(contactDto);
         addContactPage.clickBtnSave();
-  //      Assert.assertFalse(addContactPage.isContactCard());
         if (addContactPage.isSaveBtn()) {
             Assert.assertFalse(addContactPage.isContactCard());
         } else {
