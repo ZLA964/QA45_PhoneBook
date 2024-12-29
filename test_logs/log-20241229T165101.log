@@ -1,0 +1,15 @@
+16:51:01.503 [Test worker] INFO  manager.ApplicationManager - Start testing --> editContactTestDPFile
+16:51:03.187 [Test worker] INFO  manager.ApplicationManager - edit Contact Test with DP-File
+16:51:05.619 [Test worker] INFO  manager.ApplicationManager - Stop test --> editContactTestDPFile
+16:51:05.704 [Test worker] INFO  manager.ApplicationManager - Start testing --> editContactTestDPFile
+16:51:07.055 [Test worker] INFO  manager.ApplicationManager - edit Contact Test with DP-File
+16:51:09.459 [Test worker] INFO  manager.ApplicationManager - Stop test --> editContactTestDPFile
+16:51:09.543 [Test worker] INFO  manager.ApplicationManager - Start testing --> editContactTestDPFile
+16:51:11.005 [Test worker] INFO  manager.ApplicationManager - edit Contact Test with DP-File
+16:51:13.406 [Test worker] INFO  manager.ApplicationManager - Stop test --> editContactTestDPFile
+16:51:13.488 [Test worker] INFO  manager.ApplicationManager - Start testing --> editContactTestDPFile
+16:51:15.074 [Test worker] INFO  manager.ApplicationManager - edit Contact Test with DP-File
+16:51:17.498 [Test worker] INFO  manager.ApplicationManager - Stop test --> editContactTestDPFile
+16:51:17.581 [Test worker] INFO  manager.ApplicationManager - Start testing --> editContactTestDPFile
+16:51:19.051 [Test worker] INFO  manager.ApplicationManager - edit Contact Test with DP-File
+16:51:21.467 [Test worker] INFO  manager.ApplicationManager - Stop test --> editContactTestDPFile
