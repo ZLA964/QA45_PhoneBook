@@ -6,14 +6,16 @@ import dto.UserDto;
 import manager.ApplicationManager;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.ContactsPage;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.TestNGListener;
 
 import static utils.RandomUtils.*;
-
+@Listeners(TestNGListener.class)
 public class EditContactAleksTest extends ApplicationManager {
     UserDto user = new UserDto( "frodo_begin" + 1 + "@gmail.com", "P1password!_");
     ContactsPage contactsPage;

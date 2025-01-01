@@ -22,7 +22,7 @@ public class ApplicationManager {
 
     @BeforeMethod
     public void setup(Method method) {
-        logger.info("Start testing --> " + method.getName());
+//        logger.info("Start testing --> " + method.getName());
         driver = new ChromeDriver();
         driver.manage().window().maximize();
 // /       testData = new TestsDates(1);
@@ -33,7 +33,7 @@ public class ApplicationManager {
 
     @AfterMethod
     public void tearDown(Method method) {
-        logger.info("Stop test --> " + method.getName());
+ //       logger.info("Stop test --> " + method.getName());
 
         if (driver != null) {
           driver.quit();

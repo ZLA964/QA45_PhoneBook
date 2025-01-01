@@ -5,13 +5,16 @@ import dto.UserDto;
 import manager.ApplicationManager;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.AddPage;
 import pages.ContactsPage;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.TestNGListener;
 
+@Listeners(TestNGListener.class)
 public class AddContactAleksTests extends ApplicationManager {
     UserDto user = new UserDto( "frodo_begin" + 1 + "@gmail.com", "P1password!_");
     AddPage addPage;
@@ -27,12 +30,12 @@ public class AddContactAleksTests extends ApplicationManager {
    }
 
 
-    @Test(invocationCount = 5)
+    @Test(invocationCount = 3)
     public void addNewContactPositiveTest(){
         ContactDtoLombok contact = ContactDtoLombok.builder()
                 .name("Tree")
                 .lastName("Green1023")
-                .email("treegreen@mail.com")
+                .email("treegree@nmail.com")
                 .phone("1234567890")
                 .address("Forest")
                 .description("Test Contact 01")

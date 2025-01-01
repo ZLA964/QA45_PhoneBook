@@ -4,13 +4,16 @@ import dto.UserDto;
 import manager.ApplicationManager;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.ContactsPage;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.TestNGListener;
 
 import java.util.Random;
 
+@Listeners(TestNGListener.class)
 public class LoginTestInClassTest extends ApplicationManager {
     private String email;
     private String password;
