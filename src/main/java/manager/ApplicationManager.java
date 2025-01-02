@@ -1,7 +1,7 @@
 package manager;
 
 import lombok.Getter;
-import org.openqa.selenium.WebDriver;
+// import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -36,16 +36,16 @@ public class ApplicationManager {
 
     @AfterMethod
     public void tearDown(Method method) {
- //       logger.info("Stop test --> " + method.getName());
-
         if (driver != null) {
           driver.quit();
         }
     }
 }
 
-// /       try {
+/* /       try {
 //            Thread.sleep(3000);
 //        } catch (InterruptedException e) {
 //            throw new RuntimeException(e);
 //        }
+//       logger.info("Stop test --> " + method.getName());
+ */

@@ -8,10 +8,12 @@ import manager.ApplicationManager;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.*;
+import utils.TestNGListener;
 
-
+@Listeners(TestNGListener.class)
 public class ContactTests extends ApplicationManager {
     ContactDto contactDto;
 //    UserDto user = new UserDto("frodo_begin" + 1 + "@gmail.com", "P1password!_");

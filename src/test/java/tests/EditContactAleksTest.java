@@ -15,6 +15,7 @@ import pages.LoginPage;
 import utils.TestNGListener;
 
 import static utils.RandomUtils.*;
+
 @Listeners(TestNGListener.class)
 public class EditContactAleksTest extends ApplicationManager {
     UserDto user = new UserDto( "frodo_begin" + 1 + "@gmail.com", "P1password!_");

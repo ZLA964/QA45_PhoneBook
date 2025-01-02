@@ -10,6 +10,7 @@ import pages.LoginPage;
 import utils.TestNGListener;
 
 import java.util.Random;
+
 @Listeners(TestNGListener.class)
 public class RegistrationTests extends ApplicationManager {
 

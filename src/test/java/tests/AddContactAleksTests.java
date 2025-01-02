@@ -14,24 +14,30 @@ import pages.HomePage;
 import pages.LoginPage;
 import utils.TestNGListener;
 
+import static utils.PropertiesReader.*;
+
 @Listeners(TestNGListener.class)
 public class AddContactAleksTests extends ApplicationManager {
-    UserDto user = new UserDto( "frodo_begin" + 1 + "@gmail.com", "P1password!_");
+    //   UserDto user = new UserDto( "frodo_begin" + 1 + "@gmail.com", "P1password!_");
+    UserDto user = new UserDto(
+            getProperty("login.properties", "email"),
+            getProperty("login.properties", "password"));
+
     AddPage addPage;
 
     SoftAssert softAssert = new SoftAssert();
 
-   @BeforeMethod
-   public void login() {
-       new HomePage(getDriver()).clickBtnLoginHeader();
-       new LoginPage(getDriver()).typeLoginForm(user);
-       new ContactsPage(getDriver()).clickBtnAdd();
-       addPage = new AddPage(getDriver());
-   }
+    @BeforeMethod
+    public void login() {
+        new HomePage(getDriver()).clickBtnLoginHeader();
+        new LoginPage(getDriver()).typeLoginForm(user);
+        new ContactsPage(getDriver()).clickBtnAdd();
+        addPage = new AddPage(getDriver());
+    }
 
 
     @Test(invocationCount = 3)
-    public void addNewContactPositiveTest(){
+    public void addNewContactPositiveTest() {
         ContactDtoLombok contact = ContactDtoLombok.builder()
                 .name("Tree")
                 .lastName("Green1023")
@@ -46,7 +52,7 @@ public class AddContactAleksTests extends ApplicationManager {
     }
 
     @Test
-    public void addNewContactNegativeTest_emptyName(){
+    public void addNewContactNegativeTest_emptyName() {
         ContactDtoLombok contact = ContactDtoLombok.builder()
                 .name("")
                 .lastName("Green1023")
@@ -61,7 +67,7 @@ public class AddContactAleksTests extends ApplicationManager {
     }
 
     @Test
-    public void addNewContactNegativeTest_wrongPhone(){
+    public void addNewContactNegativeTest_wrongPhone() {
         ContactDtoLombok contact = ContactDtoLombok.builder()
                 .name("Tree")
                 .lastName("Green1023")
@@ -74,13 +80,13 @@ public class AddContactAleksTests extends ApplicationManager {
         addPage.clickBtnSave();
         String message = addPage.closeAlertAndReturnText();
         System.out.println(message);
-        softAssert.assertTrue( message.contains("Phone not valid: Phone number must"),
+        softAssert.assertTrue(message.contains("Phone not valid: Phone number must"),
                 "assert message contains not pass");
         softAssert.assertAll();
     }
 
     @Test
-    public void addNewContactNegativeTest_wrongEmail(){
+    public void addNewContactNegativeTest_wrongEmail() {
         ContactDtoLombok contact = ContactDtoLombok.builder()
                 .name("Tree")
                 .lastName("Green1023")
@@ -93,7 +99,7 @@ public class AddContactAleksTests extends ApplicationManager {
         addPage.clickBtnSave();
         String message = addPage.closeAlertAndReturnText();
         System.out.println(message);
-        softAssert.assertTrue( message.contains("Email not valid: must be a well-formed"),
+        softAssert.assertTrue(message.contains("Email not valid: must be a well-formed"),
                 "assert message contains not pass");
         softAssert.assertAll();
     }

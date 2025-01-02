@@ -28,7 +28,7 @@ public class WebDrvListener extends AbstractWebDriverEventListener {
 //  not work!!!          logger.info("--- Current URL before alert acceptance: " + driver.getCurrentUrl());
 //  not work!!!          logger.info("--- Page title before alert acceptance: " + driver.getTitle());
 
- // Take a screenshot of the entire page including the alert
+            // Take a screenshot of the entire page including the alert
 
 
         } catch (NoAlertPresentException e) { // Log a warning if no alert is present
@@ -142,6 +142,11 @@ public class WebDrvListener extends AbstractWebDriverEventListener {
     @Override
     public void afterClickOn(WebElement element, WebDriver driver) {
         super.afterClickOn(element, driver);
+        if (element != null) {
+            logger.info("--- click on element --> " + element.toString());
+        } else {
+            logger.info("--- ellement is null");
+        }
     }
 
     @Override

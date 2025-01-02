@@ -6,12 +6,15 @@ import dto.UserDto;
 import manager.ApplicationManager;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.*;
+import utils.TestNGListener;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
 
+@Listeners(TestNGListener.class)
 public class EditContactsTests extends ApplicationManager {
     UserDto user = new UserDto("frodo_begin" + 1 + "@gmail.com", "P1password!_");
     ContactsPage contactsPage;
