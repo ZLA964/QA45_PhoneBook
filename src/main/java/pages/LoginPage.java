@@ -2,6 +2,7 @@ package pages;
 
 import dto.UserDto;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -56,9 +57,18 @@ public class LoginPage extends BasePage {
     }
 
     public void closeAlert() {
+        try {
         Alert alert = new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.alertIsPresent());
-        System.out.println(alert.getText());
-        alert.accept();
+  //      System.out.println(alert.getText());
+            String alertText = alert.getText();
+//            logger.info("--- closeAlert -> Alert appeared with text: " + alertText);
+            alert.accept();
+            logger.info("--- closeAlert -> Alert accepted successfully.");
+        } catch (TimeoutException e) {
+            logger.warn("No alert appeared within the timeout period.");
+        } catch (Exception e) {
+            logger.info("An unexpected error occurred while handling the alert: " + e.getMessage());
+        }
     }
 }
