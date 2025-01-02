@@ -3,6 +3,7 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+src/test/resources/properties/login.properties
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
@@ -17,7 +18,8 @@ out/
 !**/src/test/**/out/
 test_logs
 screenshots
-!**/src/test/resources/properties/
+src/test/resources/properties/login.properties
+
 
 ### Eclipse ###
 .apt_generated
