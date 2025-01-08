@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 
+import static utils.TakeScreenShot.*;
+
 public class WebDrvListener extends AbstractWebDriverEventListener {
 
     Logger logger = LoggerFactory.getLogger(WebDrvListener.class);
@@ -182,6 +184,8 @@ public class WebDrvListener extends AbstractWebDriverEventListener {
     @Override
     public void onException(Throwable throwable, WebDriver driver) {
         super.onException(throwable, driver);
+        logger.info("--- created screenShot onException");
+        takeScreenShot((TakesScreenshot)driver);
     }
 
     @Override

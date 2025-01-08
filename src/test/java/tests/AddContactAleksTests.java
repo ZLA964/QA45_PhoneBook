@@ -3,6 +3,7 @@ package tests;
 import dto.ContactDtoLombok;
 import dto.UserDto;
 import manager.ApplicationManager;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -15,6 +16,7 @@ import pages.LoginPage;
 import utils.TestNGListener;
 
 import static utils.PropertiesReader.*;
+import static utils.TakeScreenShot.*;
 
 @Listeners(TestNGListener.class)
 public class AddContactAleksTests extends ApplicationManager {
@@ -48,6 +50,7 @@ public class AddContactAleksTests extends ApplicationManager {
                 .build();
         addPage.typeContactForm(contact);
         addPage.clickBtnSave();
+        takeScreenShot((TakesScreenshot) getDriver());
         Assert.assertTrue(new ContactsPage(getDriver()).validateLastElementContactList(contact));
     }
 
