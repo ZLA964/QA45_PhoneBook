@@ -1,7 +1,7 @@
 package okhttp;
 
 import dto.UserDtoLombok;
-import okhttp3.OkHttpClient;
+
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -29,7 +29,8 @@ public class RegistrationTests implements BaseApi {
                 .build();
         try {
             Response response = OK_HTTP_CLIENT.newCall(request).execute();
-            System.out.println(response.body().string());
+            System.out.println(response.body() != null ? response.body().string() : "no body...");
+            response.close();
             Assert.assertTrue(response.isSuccessful());
         } catch (IOException e) {
             Assert.fail("Created exception");
@@ -52,7 +53,7 @@ public class RegistrationTests implements BaseApi {
         try {
             Response response = OK_HTTP_CLIENT.newCall(request).execute();
             System.out.println(response);
-            System.out.println(response.body().string());
+            System.out.println(response.body() != null ? response.body().string() : "no body...");
 
             Assert.assertEquals(response.code(), 400);
         } catch (IOException e) {
@@ -75,9 +76,11 @@ public class RegistrationTests implements BaseApi {
                 .build();
         try {
             Response response = OK_HTTP_CLIENT.newCall(request).execute();
+            response.close();
             if(response.isSuccessful()) {
                 Response response1 = OK_HTTP_CLIENT.newCall(request).execute();
-                System.out.println(response1.body().string());
+                System.out.println(response1.body() != null ? response1.body().string() : "no body...");
+                response1.close();
                 Assert.assertEquals(response1.code(),409);
             }
         } catch (IOException e) {
